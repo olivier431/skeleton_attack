@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cave - BigRocks1.png-63745d23dba8d3c7732bc29c20d85e6d.stex"
+path="res://.import/Grass1.png-045706f0d2d3bbf26c56fd5ffb0f9eb2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Assets 1024 Cave/Cave - BigRocks1.png"
-dest_files=[ "res://.import/Cave - BigRocks1.png-63745d23dba8d3c7732bc29c20d85e6d.stex" ]
+source_file="res://Asset/Platforme/Grass1.png"
+dest_files=[ "res://.import/Grass1.png-045706f0d2d3bbf26c56fd5ffb0f9eb2.stex" ]
 
 [params]
 

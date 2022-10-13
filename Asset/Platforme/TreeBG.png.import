@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cave - Floor.png-fa561324af7f79c7cd92b9d8344afb60.stex"
+path="res://.import/TreeBG.png-d82677f15d5f081a6c50164861f5a61d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Assets 1024 Cave/Cave - Floor.png"
-dest_files=[ "res://.import/Cave - Floor.png-fa561324af7f79c7cd92b9d8344afb60.stex" ]
+source_file="res://Asset/Platforme/TreeBG.png"
+dest_files=[ "res://.import/TreeBG.png-d82677f15d5f081a6c50164861f5a61d.stex" ]
 
 [params]
 

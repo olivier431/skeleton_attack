@@ -7,3 +7,12 @@ C:\Users\oli_4\Desktop\Skeleton_Attack\.mono\temp\bin\Debug\Prpjet_session.dll
 C:\Users\oli_4\Desktop\Skeleton_Attack\.mono\temp\bin\Debug\Prpjet_session.pdb
 C:\Users\oli_4\Desktop\Skeleton_Attack\.mono\temp\obj\Debug\Prpjet_session.dll
 C:\Users\oli_4\Desktop\Skeleton_Attack\.mono\temp\obj\Debug\Prpjet_session.pdb
+C:\Users\Olivier Lefebvre\Desktop\Skeleton_Attack\skeleton_attack\.mono\temp\bin\Debug\Prpjet_session.dll
+C:\Users\Olivier Lefebvre\Desktop\Skeleton_Attack\skeleton_attack\.mono\temp\bin\Debug\Prpjet_session.pdb
+C:\Users\Olivier Lefebvre\Desktop\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.csproj.AssemblyReference.cache
+C:\Users\Olivier Lefebvre\Desktop\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Olivier Lefebvre\Desktop\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.AssemblyInfoInputs.cache
+C:\Users\Olivier Lefebvre\Desktop\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.AssemblyInfo.cs
+C:\Users\Olivier Lefebvre\Desktop\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.csproj.CoreCompileInputs.cache
+C:\Users\Olivier Lefebvre\Desktop\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.dll
+C:\Users\Olivier Lefebvre\Desktop\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.pdb

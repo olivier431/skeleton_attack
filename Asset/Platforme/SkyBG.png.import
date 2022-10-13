@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cave - Platforms.png-e9d391c77b163783deb954108d644318.stex"
+path="res://.import/SkyBG.png-e1b65257f41bc8137bc0533146749d7c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Assets 1024 Cave/Cave - Platforms.png"
-dest_files=[ "res://.import/Cave - Platforms.png-e9d391c77b163783deb954108d644318.stex" ]
+source_file="res://Asset/Platforme/SkyBG.png"
+dest_files=[ "res://.import/SkyBG.png-e1b65257f41bc8137bc0533146749d7c.stex" ]
 
 [params]
 

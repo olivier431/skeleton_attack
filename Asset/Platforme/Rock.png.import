@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cave - RockCombinations1.png-5061c5539ed00adb79baae45dfd203b8.stex"
+path="res://.import/Rock.png-3aea0b20986b7b5db73bfd911d8ce949.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Assets 1024 Cave/Cave - RockCombinations1.png"
-dest_files=[ "res://.import/Cave - RockCombinations1.png-5061c5539ed00adb79baae45dfd203b8.stex" ]
+source_file="res://Asset/Platforme/Rock.png"
+dest_files=[ "res://.import/Rock.png-3aea0b20986b7b5db73bfd911d8ce949.stex" ]
 
 [params]
 

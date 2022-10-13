@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Square - Black.jpg-56992dd2747f1c421cebc1aab7ea5fcb.stex"
+path="res://.import/HillsNearBG.png-578f9f66aa8a3573074414f919eaa4d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Assets 1024 Cave/Square - Black.jpg"
-dest_files=[ "res://.import/Square - Black.jpg-56992dd2747f1c421cebc1aab7ea5fcb.stex" ]
+source_file="res://Asset/Platforme/HillsNearBG.png"
+dest_files=[ "res://.import/HillsNearBG.png-578f9f66aa8a3573074414f919eaa4d4.stex" ]
 
 [params]
 
