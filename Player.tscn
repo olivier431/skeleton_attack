@@ -278,9 +278,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=47]
-radius = 108.0
-height = 0.0
+[sub_resource type="RectangleShape2D" id=47]
+extents = Vector2( 228, 106 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 3, -3 )
@@ -294,7 +293,7 @@ animation = "idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -7, 20 )
+position = Vector2( -2.5001, -13.9999 )
 rotation = -1.5708
 scale = Vector2( 0.25, 0.25 )
 shape = SubResource( 47 )

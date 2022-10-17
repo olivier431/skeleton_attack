@@ -7,7 +7,7 @@ public class Player : KinematicBody2D
 	const int GRAVITY = 20;
 	const int MAXFALLSPEED = 200;
 	const int MAXSPEED = 100;
-	const int JUMPFORCE = 300;
+	const int JUMPFORCE = 350;
 	
 	const int ACCEL = 10;
 	Vector2 vZero = new Vector2();
