@@ -8,23 +8,23 @@
     ".NETFramework,Version=v4.7.2": []
   },
   "packageFolders": {
-    "C:\\Users\\Olivier Lefebvre\\.nuget\\packages\\": {},
+    "C:\\Users\\oli_4\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Olivier Lefebvre\\Desktop\\Skeleton_Attack\\skeleton_attack\\Prpjet_session.csproj",
+      "projectUniqueName": "C:\\Users\\oli_4\\Desktop\\Skeleton_Attack\\skeleton_attack\\Prpjet_session.csproj",
       "projectName": "Prpjet_session",
-      "projectPath": "C:\\Users\\Olivier Lefebvre\\Desktop\\Skeleton_Attack\\skeleton_attack\\Prpjet_session.csproj",
-      "packagesPath": "C:\\Users\\Olivier Lefebvre\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Olivier Lefebvre\\Desktop\\Skeleton_Attack\\skeleton_attack\\.mono\\temp\\obj\\",
+      "projectPath": "C:\\Users\\oli_4\\Desktop\\Skeleton_Attack\\skeleton_attack\\Prpjet_session.csproj",
+      "packagesPath": "C:\\Users\\oli_4\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\oli_4\\Desktop\\Skeleton_Attack\\skeleton_attack\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Olivier Lefebvre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\oli_4\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -50,7 +50,7 @@
     "frameworks": {
       "net472": {
         "targetAlias": "net472",
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

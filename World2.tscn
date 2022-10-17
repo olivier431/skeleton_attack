@@ -3,7 +3,8 @@
 [ext_resource path="res://Asset/Platforme/HillsNearBG.png" type="Texture" id=1]
 [ext_resource path="res://Asset/Platforme/SkyBG.png" type="Texture" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://platforms.tres" type="TileSet" id=4]
+[ext_resource path="res://Asset/Platforme/platforms.tres" type="TileSet" id=4]
+
 
 [node name="World2" type="Node2D"]
 
