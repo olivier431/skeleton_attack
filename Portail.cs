@@ -21,16 +21,18 @@ public class Portail : Area2D
 
 	public override void _Process(float delta)
 	{
-	 	var frames = GetOverlappingBodies();
-		foreach (var frame in frames){
-			GD.Print(frame);
-//			if(frame.GetType() == KinematicBody2D){
-//				GetTree().ChangeScene("World2.tscn");
-//			}
-		}
-		
+	 	
 		
   	}
+
+	private void _on_Portail_body_entered(object body)
+	{
+		 if (body.GetType().Name.ToString() == "Player"){
+			GetTree().ChangeScene("res://World2.tscn");
+		}
+		
+	
+	}
 }
 
  
