@@ -7,6 +7,9 @@
 [ext_resource path="res://BackGround.cs" type="Script" id=5]
 
 [node name="BackGround" type="ParallaxBackground"]
+offset = Vector2( 960, 540 )
+transform = Transform2D( 1, 0, 0, 1, 960, 540 )
+scroll_base_scale = Vector2( 1, 0.25 )
 script = ExtResource( 5 )
 
 [node name="Sky" type="ParallaxLayer" parent="."]
@@ -27,5 +30,4 @@ texture = ExtResource( 2 )
 [node name="Mountains" type="ParallaxLayer" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Mountains"]
-position = Vector2( 8, 328 )
 texture = ExtResource( 3 )

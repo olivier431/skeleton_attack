@@ -23,7 +23,7 @@ public class Player : KinematicBody2D
 		 _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
 		_cam = GetNode<Camera2D>("Camera2D");
 		GD.Print(_cam);
-		_cam.Zoom = new Vector2(0.4f, 0.4f);
+		_cam.Zoom = new Vector2(0.3f, 0.3f);
 	}
 
  public override void _PhysicsProcess(float delta)
@@ -72,5 +72,13 @@ public class Player : KinematicBody2D
 		}
 
 		motion = MoveAndSlide(motion, UP);
+		
+		if (Input.IsActionPressed("Attack1")) {
+			_animatedSprite.Play("attack1");
+		}
+		
+		if (Input.IsActionPressed("Attack2")) {
+			_animatedSprite.Play("attack2");
+		}
 	}
 }
