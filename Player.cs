@@ -16,10 +16,14 @@ public class Player : KinematicBody2D
 	Vector2 motion = new Vector2();
 	
 	 AnimatedSprite _animatedSprite;
+	Camera2D _cam;
 	
 	public override void _Ready()
 	{
 		 _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
+		_cam = GetNode<Camera2D>("Camera2D");
+		GD.Print(_cam);
+		_cam.Zoom = new Vector2(0.4f, 0.4f);
 	}
 
  public override void _PhysicsProcess(float delta)
