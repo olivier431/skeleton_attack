@@ -14,7 +14,7 @@ public class Player : KinematicBody2D
 
 	bool facing_right = true;
 	Vector2 motion = new Vector2();
-	
+	bool IsAttacking = false; 
 	 AnimatedSprite _animatedSprite;
 	Camera2D _cam;
 	
@@ -24,6 +24,10 @@ public class Player : KinematicBody2D
 		_cam = GetNode<Camera2D>("Camera2D");
 		GD.Print(_cam);
 		_cam.Zoom = new Vector2(0.3f, 0.3f);
+	}
+	private void _on_AnimatedSprite_animation_finished()
+	{
+		IsAttacking = false;
 	}
 
  public override void _PhysicsProcess(float delta)
@@ -42,17 +46,20 @@ public class Player : KinematicBody2D
 
 		 motion.x = motion.Clamped(MAXSPEED).x;
 
-		if (Input.IsActionPressed("ui_left")) {
+		if (Input.IsActionPressed("ui_left") && IsAttacking == false) {
 			motion.x -= ACCEL;
 			facing_right = false;
 			_animatedSprite.Play("run");
-		} else if (Input.IsActionPressed("ui_right")) {
+		} else if (Input.IsActionPressed("ui_right") && IsAttacking == false) {
 			motion.x += ACCEL;
 			facing_right = true;
 			_animatedSprite.Play("run");
 		} else {
 			motion = motion.LinearInterpolate(Vector2.Zero, 0.2f);
-			_animatedSprite.Play("idle");
+			
+			if(IsAttacking == false){
+				_animatedSprite.Play("idle");
+			}	
 		}
 
 		if (IsOnFloor())
@@ -64,9 +71,9 @@ public class Player : KinematicBody2D
 			}
 
 		if (!IsOnFloor()) {
-			if (motion.y < 0) {
+			if (motion.y < 0  && IsAttacking == false) {
 				_animatedSprite.Play("jump");
-			} else if (motion.y > 0) {
+			} else if (motion.y > 0  && IsAttacking == false) {
 				_animatedSprite.Play("fall");
 			}
 		}
@@ -75,10 +82,15 @@ public class Player : KinematicBody2D
 		
 		if (Input.IsActionPressed("Attack1")) {
 			_animatedSprite.Play("attack1");
+			IsAttacking = true;
 		}
 		
 		if (Input.IsActionPressed("Attack2")) {
 			_animatedSprite.Play("attack2");
+			IsAttacking = true;
 		}
 	}
 }
+
+
+
