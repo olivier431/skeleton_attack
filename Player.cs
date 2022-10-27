@@ -44,7 +44,7 @@ public class Player : KinematicBody2D
 			_animatedSprite.FlipH = true;
 		}
 
-		 motion.x = motion.Clamped(MAXSPEED).x;
+						motion.x = Mathf.Lerp(motion.x, MAXSPEED * motion.x > 0 ? 1 : -1, (ACCEL * 1f) / MAXSPEED);
 
 		if (Input.IsActionPressed("ui_left") && IsAttacking == false) {
 			motion.x -= ACCEL;
