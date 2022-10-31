@@ -1,2 +1,0 @@
-﻿57215
-C:/Users/Olivier Lefebvre/Desktop/CEGEP/Automne 2022/Programmation jeux/Godot_v3.5.1-stable_mono_win64/Godot_v3.5.1-stable_mono_win64.exe

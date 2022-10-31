@@ -10,7 +10,6 @@ public class Player : KinematicBody2D
 	const int JUMPFORCE = 335;
 	
 	const int ACCEL = 10;
-	Vector2 vZero = new Vector2();
 
 	bool facing_right = true;
 	Vector2 motion = new Vector2();
@@ -23,7 +22,7 @@ public class Player : KinematicBody2D
 		 _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
 		_cam = GetNode<Camera2D>("Camera2D");
 		GD.Print(_cam);
-		_cam.Zoom = new Vector2(0.3f, 0.3f);
+		_cam.Zoom = new Vector2(0.15f, 0.15f);
 	}
 	private void _on_AnimatedSprite_animation_finished()
 	{
@@ -44,7 +43,7 @@ public class Player : KinematicBody2D
 			_animatedSprite.FlipH = true;
 		}
 
-						motion.x = Mathf.Lerp(motion.x, MAXSPEED * motion.x > 0 ? 1 : -1, (ACCEL * 1f) / MAXSPEED);
+		motion.x = Mathf.Lerp(motion.x, MAXSPEED * motion.x > 0 ? 1 : -1, (ACCEL * 1f) / MAXSPEED);
 
 		if (Input.IsActionPressed("ui_left") && IsAttacking == false) {
 			motion.x -= ACCEL;
