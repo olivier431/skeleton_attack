@@ -21,9 +21,11 @@ public class Skeleton : KinematicBody2D
 	
    	const int GRAVITY = 20;
 	const int MAXFALLSPEED = 200;
-	const int MAXSPEED = 10;
+	const int MAXSPEED = 30;
 	public Vector2 Velocity;
 	
+	bool is_player_nearby = false;
+	KinematicBody2D player;
 	
 	KinematicBody2D skeleton;
 	Sprite sprite;
@@ -31,6 +33,7 @@ public class Skeleton : KinematicBody2D
 	AnimationTree animationTree;
 	AnimationNodeStateMachinePlayback animationState;
 	RayCast2D floorDetector;
+	RayCast2D wallDetector;
 	
 	public override void _Ready()
 	{
@@ -40,9 +43,28 @@ public class Skeleton : KinematicBody2D
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
 		floorDetector = GetNode<RayCast2D>("Floor");
+		wallDetector = GetNode<RayCast2D>("Wall");
 		skeleton = GetNode<KinematicBody2D>("Skeleton");
 		Walk_enter();
 	}
+	
+	public void _on_PlayerDetector_body_entered(object body)
+	{
+		if(body.GetType().Name.ToString() == "Player"){
+			is_player_nearby = true;
+			player = (KinematicBody2D)body;
+			Attack_enter();
+		}
+	}
+
+
+public void _on_PlayerDetector_body_exited(object body)
+{
+	is_player_nearby = false;
+	player = null;
+	Walk_enter();
+}
+
 
 	public override void _PhysicsProcess(float delta)
 	{      
@@ -51,37 +73,46 @@ public class Skeleton : KinematicBody2D
 				Detect_direction_change();
 				Walk(delta);
 				break;
+			case state.ATTACK:
+				Attack(delta);
+				break;	
 		};
 		
 	}
 	
 	public void Walk(float delta){
 		if(direction_flip){
-			MyScale.x *= direction;
-			MyScale.y = 3;
-			
-			Scale = MyScale;
-			
 			direction_flip = false;
-			GD.Print($"Scale : {MyScale.y}" );
-			
 		}
 		
 		Velocity.y += GRAVITY;
-		
+
+		if(Velocity.y > MAXFALLSPEED) {
+			Velocity.y = MAXFALLSPEED;
+		}
 		Velocity.x = MAXSPEED * direction;
 		
 		Velocity = MoveAndSlide(Velocity, Vector2.Up);
-		//GD.Print($"Scale : {Scale.y}" );
+	
+	}
+	
+	public void Attack(float delta){
+		if(is_player_nearby){
+			animationState.Travel("Attack");
+		}
 	
 	}
 	
 	public void Detect_direction_change(){
 		if(IsOnFloor()){
-			if(!floorDetector.IsColliding()){
+			if(!(floorDetector.IsColliding()) || (wallDetector.IsColliding())){
 				flip_direction();
-				//GD.Print($"direction_flipped : {Scale}" );
-				MyScale.y = 1;
+				GD.Print(direction);
+				MyScale.x *= direction;
+				Scale = MyScale;
+				GD.Print(MyScale);
+				GD.Print(Scale);
+				
 			}
 		}
 	}
@@ -96,5 +127,12 @@ public class Skeleton : KinematicBody2D
 		animationState.Travel("Walk");
 		currentState = state.WALK;
 	}
+	
+	public void Attack_enter(){
+		animationState.Travel("Attack");
+		currentState = state.ATTACK;
+	}
 
 }
+
+

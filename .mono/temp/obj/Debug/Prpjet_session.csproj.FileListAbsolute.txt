@@ -34,3 +34,12 @@ C:\Users\Olivier Lefebvre\Desktop\CEGEP\Automne 2022\Programmation jeux\Skeleton
 C:\Users\Olivier Lefebvre\Desktop\CEGEP\Automne 2022\Programmation jeux\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.csproj.CoreCompileInputs.cache
 C:\Users\Olivier Lefebvre\Desktop\CEGEP\Automne 2022\Programmation jeux\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.dll
 C:\Users\Olivier Lefebvre\Desktop\CEGEP\Automne 2022\Programmation jeux\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.pdb
+C:\Users\oli_4\Desktop\Cegep\Automne 2022\Programmation_jeux\Skeleton_Attack\skeleton_attack\.mono\temp\bin\Debug\Prpjet_session.dll
+C:\Users\oli_4\Desktop\Cegep\Automne 2022\Programmation_jeux\Skeleton_Attack\skeleton_attack\.mono\temp\bin\Debug\Prpjet_session.pdb
+C:\Users\oli_4\Desktop\Cegep\Automne 2022\Programmation_jeux\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.csproj.AssemblyReference.cache
+C:\Users\oli_4\Desktop\Cegep\Automne 2022\Programmation_jeux\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\oli_4\Desktop\Cegep\Automne 2022\Programmation_jeux\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.AssemblyInfoInputs.cache
+C:\Users\oli_4\Desktop\Cegep\Automne 2022\Programmation_jeux\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.AssemblyInfo.cs
+C:\Users\oli_4\Desktop\Cegep\Automne 2022\Programmation_jeux\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.csproj.CoreCompileInputs.cache
+C:\Users\oli_4\Desktop\Cegep\Automne 2022\Programmation_jeux\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.dll
+C:\Users\oli_4\Desktop\Cegep\Automne 2022\Programmation_jeux\Skeleton_Attack\skeleton_attack\.mono\temp\obj\Debug\Prpjet_session.pdb

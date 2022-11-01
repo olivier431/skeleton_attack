@@ -10,12 +10,19 @@ public class Player : KinematicBody2D
 	const int JUMPFORCE = 335;
 	
 	const int ACCEL = 10;
+	
+	int life = 3;
 
 	bool facing_right = true;
 	Vector2 motion = new Vector2();
 	bool IsAttacking = false; 
-	 AnimatedSprite _animatedSprite;
+	AnimatedSprite _animatedSprite;
 	Camera2D _cam;
+	Area2D _Hurtbox;
+	
+	bool hurt = false;
+	
+	bool death = false;
 	
 	public override void _Ready()
 	{
@@ -27,7 +34,17 @@ public class Player : KinematicBody2D
 	private void _on_AnimatedSprite_animation_finished()
 	{
 		IsAttacking = false;
+		hurt = false;
 	}
+	
+	private void _on_HurtBox_area_entered(Area2D area)
+	{
+		if(area.IsInGroup("enemy_hitbox")){
+			hurt = true;
+		}
+	}
+
+	
 
  public override void _PhysicsProcess(float delta)
 	{
@@ -56,7 +73,7 @@ public class Player : KinematicBody2D
 		} else {
 			motion = motion.LinearInterpolate(Vector2.Zero, 0.2f);
 			
-			if(IsAttacking == false){
+			if(IsAttacking == false && hurt == false){
 				_animatedSprite.Play("idle");
 			}	
 		}
@@ -88,8 +105,25 @@ public class Player : KinematicBody2D
 			_animatedSprite.Play("attack2");
 			IsAttacking = true;
 		}
+		
+		if(hurt){
+		_animatedSprite.Play("hit");
+		hurt = true;
+		life--;
+		GD.Print(life);
+		}
+		
+		if(life == 0){
+			GD.Print(life);
+			_animatedSprite.Play("death");
+			death = true;
+		}
+	
+	
 	}
 }
+
+
 
 
 

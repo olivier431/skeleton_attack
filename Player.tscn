@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Asset/Wizard Pack/Attack1.png" type="Texture" id=1]
 [ext_resource path="res://Asset/Wizard Pack/Attack2.png" type="Texture" id=2]
@@ -279,21 +279,25 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=47]
-extents = Vector2( 42, 28 )
+extents = Vector2( 40.5, 24.5001 )
+
+[sub_resource type="RectangleShape2D" id=48]
+extents = Vector2( 23.875, 23.5 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 3, -3 )
 collision_layer = 2
+collision_mask = 5
 script = ExtResource( 9 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 46 )
 animation = "idle"
-frame = 4
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 5 )
+position = Vector2( -4.49992, 6.50005 )
 rotation = -1.5708
 shape = SubResource( 47 )
 
@@ -302,4 +306,13 @@ current = true
 zoom = Vector2( 0.15, 0.15 )
 smoothing_enabled = true
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2( -3, 9 )
+shape = SubResource( 48 )
+
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
