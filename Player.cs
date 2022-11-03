@@ -196,6 +196,12 @@ public class Player : KinematicBody2D
 		_statemachine.Start("Death");
 	}
 	
+	private void End_Death(){
+		GD.Print("Death");
+		QueueFree();
+		GetTree().ChangeScene("res://DeathScene.tscn");
+	}
+	
 	private void Life_change(int life){
 		_ProgressBar.Value = life;
 	}
