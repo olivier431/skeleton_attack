@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Asset/Platforme/platforms.tres" type="TileSet" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Asset/Platforme/Tree.tres" type="TileSet" id=6]
 [ext_resource path="res://Asset/Platforme/TreeBG.tres" type="TileSet" id=7]
 [ext_resource path="res://Asset/Platforme/Rock.tres" type="TileSet" id=8]
-[ext_resource path="res://LifeBar.tscn" type="PackedScene" id=9]
 
 [node name="Wordl1" type="Node2D"]
 position = Vector2( 216, 768 )
@@ -46,14 +45,6 @@ tile_data = PoolIntArray( -4390606, 0, 0, -982944, 0, 0, -196619, 0, 0, -262086,
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -320, 184 )
-
-[node name="Control" parent="Player" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -32.0
-margin_top = -36.0
-margin_right = -32.0
-margin_bottom = -36.0
 
 [node name="Portail" parent="." instance=ExtResource( 5 )]
 position = Vector2( 3776, 192 )

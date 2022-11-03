@@ -32,6 +32,9 @@ public class Player : KinematicBody2D
 	AnimationPlayer _animationplayer;
 	AnimationTree _animationtree;
 	AnimationNodeStateMachinePlayback _statemachine;
+	ProgressBar  _ProgressBar;
+	CollisionShape2D _SpellRight;
+	CollisionShape2D _SpellLeft;
 	
 	
 	public override void _Ready()
@@ -40,16 +43,25 @@ public class Player : KinematicBody2D
 		_cam = GetNode<Camera2D>("Camera2D");
 		_animationtree = GetNode<AnimationTree>("AnimationTree");
 		_statemachine = (AnimationNodeStateMachinePlayback)_animationtree.Get("parameters/playback");
+		_ProgressBar = (ProgressBar)GetNode("HealthBar/ProgressBar");
+		_SpellRight = GetNode<CollisionShape2D>("SpellRight/AttackRightBox");
+		_SpellLeft = GetNode<CollisionShape2D>("SpellLeft/AttackLeftBox");
 		_cam.Zoom = new Vector2(0.15f, 0.15f);
-	}
-	private void _on_HurtBox_body_entered(object body)
-	{
-		if(body.GetType().Name.ToString() == "Skeleton"){
-			Hurt();
-			
-		}
+		
+		_SpellRight.Disabled = true;
+		_SpellLeft.Disabled = true;
+		
+	
 	}
 	
+	private void _on_HurtBox_area_entered(Area2D area)
+	{
+		GD.Print("OK");
+		if(area.IsInGroup("Masse")){
+			GD.Print("ok");
+			Hurt();
+		}
+	}
 	public Vector2 DIR(){
 		var Dir = new Vector2();
 		Dir.x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
@@ -148,9 +160,16 @@ public class Player : KinematicBody2D
 		}
 	}	
 	
+	private void Attack(){
+		motion = motion.LinearInterpolate(Vector2.Zero, 0.2f);
+		_SpellRight.Disabled = false;
+		_SpellLeft.Disabled = false;
+	}
 	private void End_Attack(){
 		currentState = State.IDLE;
 		_statemachine.Start("Idle");
+		_SpellRight.Disabled = true;
+		_SpellLeft.Disabled = true;
 	}
 	
 	private void Hurt(){
@@ -160,7 +179,7 @@ public class Player : KinematicBody2D
 		if(life == 0){
 			Death();
 		}
-	
+		Life_change(life);
 	}
 	
 	private void Hurt_End(){
@@ -171,6 +190,10 @@ public class Player : KinematicBody2D
 	private void Death(){
 		currentState = State.DEATH;
 		_statemachine.Start("Death");
+	}
+	
+	private void Life_change(int life){
+		_ProgressBar.Value = life;
 	}
  	public override void _PhysicsProcess(float delta)
 	{
@@ -190,7 +213,7 @@ public class Player : KinematicBody2D
 				Fall();
 				break;
 			case State.ATTACK:
-				motion = motion.LinearInterpolate(Vector2.Zero, 0.2f);
+				Attack();
 				break;	
 		}
 		

@@ -13,10 +13,11 @@ public class LifeBar : ProgressBar
 		
 	}
 
-
 	public override void _Process(float delta)
 	{ 
-		Player player = new Player();
-		Value = player.life;
+		
 	}   
 }
+
+
+

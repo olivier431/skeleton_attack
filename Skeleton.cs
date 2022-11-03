@@ -15,7 +15,7 @@ public class Skeleton : KinematicBody2D
 		DEATH
 	};
 	
-	private int life = 100;
+	private int life = 3;
 	int collision = 0;
 	private state currentState = state.WALK;
 	
@@ -37,6 +37,8 @@ public class Skeleton : KinematicBody2D
 	RayCast2D floorDetector2;
 	RayCast2D wallDetector;
 	RayCast2D wallDetector2;
+	CollisionShape2D _MasseRight;
+	CollisionShape2D _MasseLeft;
 	
 	public override void _Ready()
 	{
@@ -50,33 +52,41 @@ public class Skeleton : KinematicBody2D
 		floorDetector2 = GetNode<RayCast2D>("Floor2");
 		wallDetector2 = GetNode<RayCast2D>("Wall2");
 		skeleton = GetNode<KinematicBody2D>("Skeleton");
+		_MasseRight = GetNode<CollisionShape2D>("AttackRight/AttackRightBox");
+		_MasseLeft = GetNode<CollisionShape2D>("AttackLeft/AttackLeftBox");
+		
+		_MasseRight.Disabled = true;
+		_MasseLeft.Disabled = true;
 		Walk_enter();
 	}
 	
-	private void _on_HurtBox_body_entered(object body)
-{
-	if(body.GetType().Name.ToString() == "Player"){
-			Hurt();
-		}
-}
+	
 	
 	public void _on_PlayerDetector_body_entered(object body)
 	{
 		if(body.GetType().Name.ToString() == "Player"){
-			GD.Print(body.GetType().Name.ToString());
 			is_player_nearby = true;
 			player = (KinematicBody2D)body;
 			Attack_enter();
 		}
 	}
+	
+	private void _on_HurtBox_area_entered(Area2D area)
+	{
+		GD.Print(_MasseRight.Disabled);
+		if(area.IsInGroup("Spell")){
+			GD.Print("Spell");
+			Hurt();
+		}
+	}
 
 
-public void _on_PlayerDetector_body_exited(object body)
-{
-	is_player_nearby = false;
-	player = null;
-	Walk_enter();
-}
+	public void _on_PlayerDetector_body_exited(object body)
+	{
+		is_player_nearby = false;
+		player = null;
+		Walk_enter();
+	}
 	
 	private void Hurt(){
 		currentState = state.HURT;
@@ -96,6 +106,9 @@ public void _on_PlayerDetector_body_exited(object body)
 	private void Death(){
 		currentState = state.DEATH;
 		animationState.Start("Death");
+	}
+	
+	private void Death_End(){
 		QueueFree();
 	}
 
@@ -137,6 +150,8 @@ public void _on_PlayerDetector_body_exited(object body)
 	
 	public void Attack(float delta){
 		if(is_player_nearby){
+			_MasseRight.Disabled = false;
+			_MasseLeft.Disabled = false;
 			animationState.Travel("Attack");
 		}
 	
@@ -168,13 +183,11 @@ public void _on_PlayerDetector_body_exited(object body)
 	}
 	
 	public void Attack_enter(){
+		_MasseRight.Disabled = false;
+		_MasseLeft.Disabled = false;
 		animationState.Travel("Attack");
 		currentState = state.ATTACK;
 	}
 
 }
-
-
-
-
 
