@@ -38,7 +38,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=18]
 resource_name = "Hurt"
-length = 0.6
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -50,6 +50,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 52, 53, 54 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Hurt_End"
+} ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -156,10 +170,10 @@ graph_offset = Vector2( -64.3671, 0 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
 [sub_resource type="RectangleShape2D" id=23]
-extents = Vector2( 13, 18 )
+extents = Vector2( 17.5, 32 )
 
 [sub_resource type="RectangleShape2D" id=24]
-extents = Vector2( 15.5, 31.5 )
+extents = Vector2( 32, 29.75 )
 
 [node name="Skeleton" type="KinematicBody2D"]
 collision_layer = 4
@@ -182,6 +196,7 @@ anims/RESET = SubResource( 4 )
 anims/Walk = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 8, -32 )
 shape = SubResource( 22 )
 
@@ -196,23 +211,35 @@ position = Vector2( 25, -33 )
 enabled = true
 cast_to = Vector2( 0, 40 )
 
+[node name="Floor2" type="RayCast2D" parent="."]
+position = Vector2( -3, -33 )
+enabled = true
+cast_to = Vector2( 0, 40 )
+
 [node name="Wall" type="RayCast2D" parent="."]
 position = Vector2( 22, -34 )
 enabled = true
 cast_to = Vector2( 18, 0 )
 
+[node name="Wall2" type="RayCast2D" parent="."]
+position = Vector2( -2, -34 )
+enabled = true
+cast_to = Vector2( -16, 0 )
+
 [node name="PlayerDetector" type="Area2D" parent="." groups=["enemy_hitbox"]]
+visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-position = Vector2( 14, -23 )
+position = Vector2( 8.5, -32 )
 shape = SubResource( 23 )
 
 [node name="HurtBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2( 8.5, -32.5 )
+position = Vector2( 10, -33.75 )
 shape = SubResource( 24 )
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_body_exited"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]

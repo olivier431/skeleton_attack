@@ -15,10 +15,11 @@ public class Skeleton : KinematicBody2D
 		DEATH
 	};
 	
-	private int life = 3;
-	
+	private int life = 100;
+	int collision = 0;
 	private state currentState = state.WALK;
 	
+	bool facing_right = true; 
    	const int GRAVITY = 20;
 	const int MAXFALLSPEED = 200;
 	const int MAXSPEED = 30;
@@ -33,7 +34,9 @@ public class Skeleton : KinematicBody2D
 	AnimationTree animationTree;
 	AnimationNodeStateMachinePlayback animationState;
 	RayCast2D floorDetector;
+	RayCast2D floorDetector2;
 	RayCast2D wallDetector;
+	RayCast2D wallDetector2;
 	
 	public override void _Ready()
 	{
@@ -44,13 +47,23 @@ public class Skeleton : KinematicBody2D
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
 		floorDetector = GetNode<RayCast2D>("Floor");
 		wallDetector = GetNode<RayCast2D>("Wall");
+		floorDetector2 = GetNode<RayCast2D>("Floor2");
+		wallDetector2 = GetNode<RayCast2D>("Wall2");
 		skeleton = GetNode<KinematicBody2D>("Skeleton");
 		Walk_enter();
 	}
 	
+	private void _on_HurtBox_body_entered(object body)
+{
+	if(body.GetType().Name.ToString() == "Player"){
+			Hurt();
+		}
+}
+	
 	public void _on_PlayerDetector_body_entered(object body)
 	{
 		if(body.GetType().Name.ToString() == "Player"){
+			GD.Print(body.GetType().Name.ToString());
 			is_player_nearby = true;
 			player = (KinematicBody2D)body;
 			Attack_enter();
@@ -64,10 +77,36 @@ public void _on_PlayerDetector_body_exited(object body)
 	player = null;
 	Walk_enter();
 }
-
+	
+	private void Hurt(){
+		currentState = state.HURT;
+		animationState.Start("Hurt");
+		life--;
+		if(life == 0){
+			Death();
+		}
+	
+	}
+	
+	private void Hurt_End(){
+		currentState = state.WALK;
+		animationState.Start("Walk");
+	}
+	
+	private void Death(){
+		currentState = state.DEATH;
+		animationState.Start("Death");
+		QueueFree();
+	}
 
 	public override void _PhysicsProcess(float delta)
-	{      
+	{
+		if (facing_right) {
+			sprite.FlipH = false;
+		} else {
+			sprite.FlipH = true;
+		}
+		
 		switch (currentState){
 			case state.WALK:
 				Detect_direction_change();
@@ -105,14 +144,14 @@ public void _on_PlayerDetector_body_exited(object body)
 	
 	public void Detect_direction_change(){
 		if(IsOnFloor()){
-			if(!(floorDetector.IsColliding()) || (wallDetector.IsColliding())){
+			if((!(floorDetector.IsColliding()) || (wallDetector.IsColliding())) || (!(floorDetector2.IsColliding()) || (wallDetector2.IsColliding()))){
 				flip_direction();
-				GD.Print(direction);
-				MyScale.x *= direction;
-				Scale = MyScale;
-				GD.Print(MyScale);
-				GD.Print(Scale);
-				
+				collision++;
+				if(collision%2 == 0){
+					facing_right = true;
+				}else{
+					facing_right = false;
+				}
 			}
 		}
 	}
@@ -134,5 +173,8 @@ public void _on_PlayerDetector_body_exited(object body)
 	}
 
 }
+
+
+
 
 
