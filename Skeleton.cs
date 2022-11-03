@@ -39,6 +39,7 @@ public class Skeleton : KinematicBody2D
 	RayCast2D wallDetector2;
 	CollisionShape2D _MasseRight;
 	CollisionShape2D _MasseLeft;
+	CollisionShape2D _Hurt;
 	
 	public override void _Ready()
 	{
@@ -54,6 +55,7 @@ public class Skeleton : KinematicBody2D
 		skeleton = GetNode<KinematicBody2D>("Skeleton");
 		_MasseRight = GetNode<CollisionShape2D>("AttackRight/AttackRightBox");
 		_MasseLeft = GetNode<CollisionShape2D>("AttackLeft/AttackLeftBox");
+		_Hurt = GetNode<CollisionShape2D>("HurtBox/CollisionShape2D");
 		
 		_MasseRight.Disabled = true;
 		_MasseLeft.Disabled = true;
@@ -73,9 +75,8 @@ public class Skeleton : KinematicBody2D
 	
 	private void _on_HurtBox_area_entered(Area2D area)
 	{
-		GD.Print(_MasseRight.Disabled);
+		GD.Print(area.GetType().Name.ToString());
 		if(area.IsInGroup("Spell")){
-			GD.Print("Spell");
 			Hurt();
 		}
 	}
@@ -106,6 +107,8 @@ public class Skeleton : KinematicBody2D
 	private void Death(){
 		currentState = state.DEATH;
 		animationState.Start("Death");
+		_Hurt.Disabled = true;
+		
 	}
 	
 	private void Death_End(){
@@ -150,8 +153,11 @@ public class Skeleton : KinematicBody2D
 	
 	public void Attack(float delta){
 		if(is_player_nearby){
+			if(facing_right){
 			_MasseRight.Disabled = false;
+		}else{
 			_MasseLeft.Disabled = false;
+		}
 			animationState.Travel("Attack");
 		}
 	
@@ -183,8 +189,11 @@ public class Skeleton : KinematicBody2D
 	}
 	
 	public void Attack_enter(){
-		_MasseRight.Disabled = false;
-		_MasseLeft.Disabled = false;
+		if(facing_right){
+			_MasseRight.Disabled = false;
+		}else{
+			_MasseLeft.Disabled = false;
+		}
 		animationState.Travel("Attack");
 		currentState = state.ATTACK;
 	}

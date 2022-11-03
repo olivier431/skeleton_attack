@@ -56,12 +56,13 @@ public class Player : KinematicBody2D
 	
 	private void _on_HurtBox_area_entered(Area2D area)
 	{
-		GD.Print("OK");
-		if(area.IsInGroup("Masse")){
-			GD.Print("ok");
+		GD.Print(area.GetType().Name.ToString());
+		if(area.IsInGroup("Attack")){
+			GD.Print("OK!");
 			Hurt();
 		}
 	}
+	
 	public Vector2 DIR(){
 		var Dir = new Vector2();
 		Dir.x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
@@ -162,8 +163,11 @@ public class Player : KinematicBody2D
 	
 	private void Attack(){
 		motion = motion.LinearInterpolate(Vector2.Zero, 0.2f);
-		_SpellRight.Disabled = false;
-		_SpellLeft.Disabled = false;
+		if(facing_right){
+			_SpellRight.Disabled = false;
+		}else{
+			_SpellLeft.Disabled = false;
+		}
 	}
 	private void End_Attack(){
 		currentState = State.IDLE;
@@ -228,7 +232,4 @@ public class Player : KinematicBody2D
 	}
 	
 }
-
-
-
 
