@@ -198,8 +198,8 @@ public class Player : KinematicBody2D
 	
 	private void End_Death(){
 		GD.Print("Death");
-		QueueFree();
 		GetTree().ChangeScene("res://DeathScene.tscn");
+		QueueFree();
 	}
 	
 	private void Life_change(int life){

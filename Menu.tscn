@@ -53,7 +53,6 @@ valign = 1
 autowrap = true
 clip_text = true
 uppercase = true
-percent_visible = -0.0714286
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
