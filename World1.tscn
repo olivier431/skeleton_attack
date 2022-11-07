@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Asset/Platforme/platforms.tres" type="TileSet" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -8,10 +8,13 @@
 [ext_resource path="res://Asset/Platforme/Tree.tres" type="TileSet" id=6]
 [ext_resource path="res://Asset/Platforme/TreeBG.tres" type="TileSet" id=7]
 [ext_resource path="res://Asset/Platforme/Rock.tres" type="TileSet" id=8]
+[ext_resource path="res://Pause.tscn" type="PackedScene" id=9]
 
 [node name="Wordl1" type="Node2D"]
 position = Vector2( 216, 768 )
 scale = Vector2( 0.25, 0.25 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 9 )]
 
 [node name="BackGround" parent="." instance=ExtResource( 3 )]
 
