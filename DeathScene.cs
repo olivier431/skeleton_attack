@@ -17,6 +17,11 @@ public class DeathScene : Control
 	{
 		GetTree().Quit();
 	}
+	
+	private void _on_MainMenu_pressed()
+	{
+		GetTree().ChangeScene("res://Menu.tscn");
+	}
 	public override void _Ready()
 	{
 		
@@ -28,6 +33,9 @@ public class DeathScene : Control
 //      
 //  }
 }
+
+
+
 
 
 

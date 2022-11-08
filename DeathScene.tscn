@@ -33,6 +33,12 @@ margin_right = 795.0
 margin_bottom = 44.0
 text = "Quit The Game"
 
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
+margin_top = 48.0
+margin_right = 795.0
+margin_bottom = 68.0
+text = "Return To Main Menu"
+
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
@@ -48,3 +54,4 @@ uppercase = true
 
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
