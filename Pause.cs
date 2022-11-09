@@ -32,6 +32,7 @@ public class Pause : CanvasLayer
 	{
 		GetTree().Paused = !GetTree().Paused;
 		GetTree().ChangeScene("res://Menu.tscn");
+		GlobalVariable.score = 0;
 	}
 	
 	private void _on_Button3_pressed()

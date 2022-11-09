@@ -107,6 +107,8 @@ public class Skeleton : KinematicBody2D
 	private void Death(){
 		currentState = state.DEATH;
 		animationState.Start("Death");
+		GlobalVariable.score += 1;
+		GD.Print(GlobalVariable.score);
 		_Hurt.Disabled = true;
 		
 	}

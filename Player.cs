@@ -50,8 +50,6 @@ public class Player : KinematicBody2D
 		
 		_SpellRight.Disabled = true;
 		_SpellLeft.Disabled = true;
-		
-	
 	}
 	
 	private void _on_HurtBox_area_entered(Area2D area)

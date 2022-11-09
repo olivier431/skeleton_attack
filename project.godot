@@ -14,6 +14,10 @@ config/name="skeleton_attack"
 run/main_scene="res://Menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GlobalVariable="*res://GlobalVariable.cs"
+
 [display]
 
 window/size/width=1920
