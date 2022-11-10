@@ -271,9 +271,9 @@ script = ExtResource( 9 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 1 )]
 margin_left = -34.0
-margin_top = -43.0
+margin_top = -53.0
 margin_right = -34.0
-margin_bottom = -43.0
+margin_bottom = -53.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 7, 7.74999 )
