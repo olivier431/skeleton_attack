@@ -19,3 +19,4 @@ public class Score : CanvasLayer
 	 	score.Text = "Score " + GlobalVariable.score;
 	}
 }
+
