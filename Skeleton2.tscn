@@ -194,10 +194,11 @@ extents = Vector2( 17, 11.5 )
 extents = Vector2( 18.5, 13 )
 
 [node name="Skeleton2" type="KinematicBody2D"]
+collision_layer = 4
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 2.00001, -20 )
+position = Vector2( 0, -21 )
 scale = Vector2( 1.10667, 1.26316 )
 texture = ExtResource( 1 )
 hframes = 12
@@ -218,18 +219,8 @@ active = true
 parameters/playback = SubResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 7, -18.5 )
+position = Vector2( 7, -19 )
 shape = SubResource( 21 )
-
-[node name="Floor" type="RayCast2D" parent="."]
-position = Vector2( 22, -21 )
-enabled = true
-cast_to = Vector2( 0, 40 )
-
-[node name="Floor2" type="RayCast2D" parent="."]
-position = Vector2( -8, -23 )
-enabled = true
-cast_to = Vector2( 0, 40 )
 
 [node name="Wall" type="RayCast2D" parent="."]
 position = Vector2( 22, -34 )

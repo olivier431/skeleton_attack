@@ -6,15 +6,17 @@ public class World2 : Node2D
 	// Declare member variables here. Examples:
 	// private int a = 2;
 	// private string b = "text";
-	Vector2 PlayerPosition = new Vector2(); 
+	Vector2 MonsterPortalPosition = new Vector2(); 
 	Vector2 EnemyPosition = new Vector2(); 
 	PackedScene _enemieScene = (PackedScene)GD.Load("res://Skeleton2.tscn");
 	KinematicBody2D Player;
+	Sprite MonsterPortal;
 	int count = 0;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Player = GetNode<KinematicBody2D>("Player");		
+		MonsterPortal = GetNode<Sprite>("MonsterPortal");		
 		GD.Print(Player.Position);
 		
 	}
@@ -24,10 +26,10 @@ public class World2 : Node2D
 		count++;
 		if(count < 10){
 			KinematicBody2D enemy = (KinematicBody2D)_enemieScene.Instance();
-			PlayerPosition = Player.Position;
+			MonsterPortalPosition = MonsterPortal.Position;
 			EnemyPosition = enemy.Position;
-			EnemyPosition.y = PlayerPosition.y;
-			EnemyPosition.x = PlayerPosition.x - 10;
+			EnemyPosition.y = MonsterPortalPosition.y;
+			EnemyPosition.x = MonsterPortalPosition.x;
 			enemy.Position = EnemyPosition;
 			AddChild(enemy);
 			GD.Print(enemy.Position);

@@ -22,7 +22,7 @@ public class Skeleton2 : KinematicBody2D
 	bool facing_right = true; 
    	const int GRAVITY = 20;
 	const int MAXFALLSPEED = 200;
-	const int MAXSPEED = 30;
+	const int MAXSPEED = 40;
 	public Vector2 Velocity;
 	
 	bool is_player_nearby = false;
@@ -33,8 +33,6 @@ public class Skeleton2 : KinematicBody2D
 	AnimationPlayer animationPlayer;
 	AnimationTree animationTree;
 	AnimationNodeStateMachinePlayback animationState;
-	RayCast2D floorDetector;
-	RayCast2D floorDetector2;
 	RayCast2D wallDetector;
 	RayCast2D wallDetector2;
 	CollisionShape2D _SwordRight;
@@ -48,9 +46,7 @@ public class Skeleton2 : KinematicBody2D
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
-		floorDetector = GetNode<RayCast2D>("Floor");
 		wallDetector = GetNode<RayCast2D>("Wall");
-		floorDetector2 = GetNode<RayCast2D>("Floor2");
 		wallDetector2 = GetNode<RayCast2D>("Wall2");
 		skeleton = GetNode<KinematicBody2D>("Skeleton");
 		_SwordRight = GetNode<CollisionShape2D>("AttackRight/AttackRightBox");
@@ -170,7 +166,7 @@ public class Skeleton2 : KinematicBody2D
 	
 	public void Detect_direction_change(){
 		if(IsOnFloor()){
-			if((!(floorDetector.IsColliding()) || (wallDetector.IsColliding())) || (!(floorDetector2.IsColliding()) || (wallDetector2.IsColliding()))){
+			if((wallDetector.IsColliding())  || (wallDetector2.IsColliding())){
 				flip_direction();
 				collision++;
 				if(collision%2 == 0){
