@@ -24,7 +24,7 @@ public class World2 : Node2D
 	private void _on_Timer_timeout()
 	{
 		count++;
-		if(count < 10){
+		if(count < 15){
 			KinematicBody2D enemy = (KinematicBody2D)_enemieScene.Instance();
 			MonsterPortalPosition = MonsterPortal.Position;
 			EnemyPosition = enemy.Position;
