@@ -10,15 +10,13 @@ public class World2 : Node2D
 	Vector2 EnemyPosition = new Vector2(); 
 	PackedScene _enemieScene = (PackedScene)GD.Load("res://Skeleton2.tscn");
 	KinematicBody2D Player;
-	Sprite MonsterPortal;
-	AudioStreamPlayer Music;	
+	Sprite MonsterPortal;	
 	int count = 0;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Player = GetNode<KinematicBody2D>("Player");		
 		MonsterPortal = GetNode<Sprite>("MonsterPortal");		
-		Music = GetNode<AudioStreamPlayer>("MusicWorld2");
 		GD.Print(Player.Position);
 		
 	}
@@ -42,10 +40,7 @@ public class World2 : Node2D
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(float delta)
 	{
-	 	if (Input.IsActionJustPressed("MusicPause"))
-			{
-				Music.Playing = !Music.Playing;
-			}
+	 	
 	}
 }
 
