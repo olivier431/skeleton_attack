@@ -10,6 +10,9 @@ public class Pause : CanvasLayer
 	Button button;
 	Button button2;
 	Button button3;
+
+	AudioStreamPlayer Music;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -17,6 +20,7 @@ public class Pause : CanvasLayer
 		button = GetNode<Button>("VBoxContainer/Button");
 		button2 = GetNode<Button>("VBoxContainer/Button2");
 		button3 = GetNode<Button>("VBoxContainer/Button3");
+		Music = GetNode<AudioStreamPlayer>("World1/MusicWorld1");
 	}
 
 	private void _on_Button_pressed()
@@ -25,6 +29,7 @@ public class Pause : CanvasLayer
 		button.Visible = !button.Visible;
 		button2.Visible = !button2.Visible;
 		button3.Visible = !button3.Visible;
+		Music.Playing = !Music.Playing;
 		GetTree().Paused = !GetTree().Paused;
 	}
 	
