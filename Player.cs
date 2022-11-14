@@ -36,6 +36,9 @@ public class Player : KinematicBody2D
 	CollisionShape2D _SpellRight;
 	CollisionShape2D _SpellLeft;
 	
+	Timer flashTimer;
+	ShaderMaterial Flash;
+	int flash_counter = 0;
 	
 	public override void _Ready()
 	{
@@ -46,10 +49,26 @@ public class Player : KinematicBody2D
 		_ProgressBar = (ProgressBar)GetNode("HealthBar/ProgressBar");
 		_SpellRight = GetNode<CollisionShape2D>("SpellRight/AttackRightBox");
 		_SpellLeft = GetNode<CollisionShape2D>("SpellLeft/AttackLeftBox");
+		flashTimer = GetNode<Timer>("FlashTimer");                        
+		Flash = sprite.Material as ShaderMaterial;
 		_cam.Zoom = new Vector2(0.15f, 0.15f);
 		
 		_SpellRight.Disabled = true;
 		_SpellLeft.Disabled = true;
+	}
+	
+	private void flash() {
+		GD.Print("Flash");
+		Flash.SetShaderParam("flash_modifier", 1);
+		flashTimer.Start();
+	}
+	
+	private void _on_FlashTimer_timeout()
+	{
+		GD.Print("Timer timeout");
+		Flash.SetShaderParam("flash_modifier", 0);
+		
+		flashTimer.Stop();
 	}
 	
 	private void _on_HurtBox_area_entered(Area2D area)
@@ -177,6 +196,7 @@ public class Player : KinematicBody2D
 	private void Hurt(){
 		currentState = State.HURT;
 		_statemachine.Start("Hurt");
+		flash();
 		life = life - 25;
 		if(life == 0){
 			Death();
@@ -236,4 +256,7 @@ public class Player : KinematicBody2D
 	}
 	
 }
+
+
+
 

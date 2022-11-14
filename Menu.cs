@@ -13,6 +13,11 @@ public class Menu : Control
 		GetTree().ChangeScene("res://World1.tscn");
 	}
 	
+	private void _on_OptionButton_pressed()
+	{
+		GetTree().ChangeScene("res://OptionMenu.tscn");
+	}
+	
 	private void _on_QuitButton_pressed()
 	{
 		GetTree().Quit();
@@ -29,6 +34,9 @@ public class Menu : Control
 //      
 //  }
 }
+
+
+
 
 
 

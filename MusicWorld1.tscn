@@ -1,42 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Asset/Music/Swinging Pants.ogg" type="AudioStream" id=1]
-
-[sub_resource type="CSharpScript" id=1]
-script/source = "using Godot;
-using System;
-
-public class MusicWorld1 : AudioStreamPlayer
-{
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = \"text\";
-	AudioStreamPlayer music;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		music = GetNode<AudioStreamPlayer>(\"MusicWorld1/AudioStreamPlayer\");
-	}
-	
-	public void MusicOnPause(){
-		if(Input.IsActionJustPressed(\"MusicPause\"))
-		{
-			GD.Print(music.Playing);
-			//music.Playing = !music.Playing;
-		}
-	}
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(float delta)
-	{
-	  MusicOnPause();
-	}
-}
-
-
-"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource( 1 )
 autoplay = true
-script = SubResource( 1 )
