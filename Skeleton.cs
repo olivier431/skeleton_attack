@@ -15,7 +15,7 @@ public class Skeleton : KinematicBody2D
 		DEATH
 	};
 	
-	private int life = 3;
+	private int life = 2;
 	int collision = 0;
 	private state currentState = state.WALK;
 	
