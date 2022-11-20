@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Asset/Platforme/platforms.tres" type="TileSet" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://BackGround.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Background1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Skeleton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Portail.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Asset/Platforme/Tree.tres" type="TileSet" id=6]
@@ -10,16 +10,18 @@
 [ext_resource path="res://Asset/Platforme/Rock.tres" type="TileSet" id=8]
 [ext_resource path="res://Pause.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Score.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Potion.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Asset/light.png" type="Texture" id=12]
 
 [node name="World1" type="Node2D"]
 position = Vector2( 216, 768 )
 scale = Vector2( 0.25, 0.25 )
 
+[node name="Background1" parent="." instance=ExtResource( 3 )]
+
 [node name="Score" parent="." instance=ExtResource( 10 )]
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 9 )]
-
-[node name="BackGround" parent="." instance=ExtResource( 3 )]
 
 [node name="Platform" type="TileMap" parent="."]
 position = Vector2( -342, 229 )
@@ -52,6 +54,12 @@ tile_data = PoolIntArray( -4390606, 0, 0, -982944, 0, 0, -196619, 0, 0, -262086,
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -320, 184 )
 
+[node name="Light2D" type="Light2D" parent="Player"]
+position = Vector2( -8, 72 )
+scale = Vector2( 0.65625, 0.460937 )
+texture = ExtResource( 12 )
+shadow_enabled = true
+
 [node name="Portail" parent="." instance=ExtResource( 5 )]
 position = Vector2( 3776, 192 )
 
@@ -75,3 +83,23 @@ position = Vector2( 2400, -356 )
 
 [node name="Skeleton7" parent="." instance=ExtResource( 4 )]
 position = Vector2( 3516, -556 )
+
+[node name="Potion" parent="." instance=ExtResource( 11 )]
+position = Vector2( 308, 216 )
+
+[node name="Potion2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1980, 220 )
+
+[node name="Potion3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1136, -420 )
+
+[node name="Potion4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 3412, -548 )
+
+[node name="Potion5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 3396, 224 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[connection signal="body_entered" from="Potion" to="Player" method="_on_Potion_body_entered"]

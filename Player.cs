@@ -79,6 +79,30 @@ public class Player : KinematicBody2D
 			Hurt();
 		}
 	}
+	//For World1
+	private void _on_Potion_body_entered(object body)
+	{
+		GD.Print(body.GetType().Name.ToString());
+		if(body.GetType().Name.ToString() == "Player"){
+			GD.Print("THIS");
+			if(life < 100){
+				life = life + 25;
+			}
+			Life_change(life);
+		}
+	}
+	//For World2
+	private void _on_Potion_body_entered2(object body)
+	{
+		GD.Print(body.GetType().Name.ToString());
+		if(body.GetType().Name.ToString() == "Player"){
+			GD.Print("THIS");
+			if(life < 100){
+				life = life + 25;
+			}
+			Life_change(life);
+		}
+	}
 	
 	public Vector2 DIR(){
 		var Dir = new Vector2();
@@ -256,6 +280,18 @@ public class Player : KinematicBody2D
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
