@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class BackGround1 : Godot.ParallaxBackground
+public class Background1 : Godot.ParallaxBackground
 {
 	[Export]
 	float Cloud_Speed = -15f;

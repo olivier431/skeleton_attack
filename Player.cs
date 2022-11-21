@@ -37,6 +37,7 @@ public class Player : KinematicBody2D
 	CollisionShape2D _SpellLeft;
 	
 	Timer flashTimer;
+	
 	ShaderMaterial Flash;
 	int flash_counter = 0;
 	
@@ -49,7 +50,7 @@ public class Player : KinematicBody2D
 		_ProgressBar = (ProgressBar)GetNode("HealthBar/ProgressBar");
 		_SpellRight = GetNode<CollisionShape2D>("SpellRight/AttackRightBox");
 		_SpellLeft = GetNode<CollisionShape2D>("SpellLeft/AttackLeftBox");
-		flashTimer = GetNode<Timer>("FlashTimer");                        
+		flashTimer = GetNode<Timer>("FlashTimer");                                              
 		Flash = sprite.Material as ShaderMaterial;
 		_cam.Zoom = new Vector2(0.15f, 0.15f);
 		
@@ -288,6 +289,8 @@ public class Player : KinematicBody2D
 	}
 	
 }
+
+
 
 
 

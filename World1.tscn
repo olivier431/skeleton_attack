@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Asset/Platforme/platforms.tres" type="TileSet" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -13,10 +13,13 @@
 [ext_resource path="res://Potion.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Asset/light.png" type="Texture" id=12]
 [ext_resource path="res://DeathZone.tscn" type="PackedScene" id=13]
+[ext_resource path="res://World1.cs" type="Script" id=14]
+[ext_resource path="res://lightPotion.tscn" type="PackedScene" id=15]
 
 [node name="World1" type="Node2D"]
 position = Vector2( 216, 768 )
 scale = Vector2( 0.25, 0.25 )
+script = ExtResource( 14 )
 
 [node name="Background1" parent="." instance=ExtResource( 3 )]
 
@@ -83,8 +86,8 @@ color = Color( 0, 0, 0, 1 )
 position = Vector2( -320, 184 )
 
 [node name="Light2D" type="Light2D" parent="Player"]
-position = Vector2( 2.00002, 50.0002 )
-scale = Vector2( 0.503906, 0.417969 )
+position = Vector2( 22.5, 64 )
+scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 12 )
 
 [node name="Potion" parent="." instance=ExtResource( 11 )]
@@ -106,9 +109,32 @@ position = Vector2( 2004, 224 )
 position = Vector2( -76, 432 )
 scale = Vector2( 0.503906, 0.417969 )
 
+[node name="LightTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="LightPotion" parent="." instance=ExtResource( 15 )]
+position = Vector2( 172, 228 )
+
+[node name="LightPotion2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1220, 160 )
+
+[node name="LightPotion3" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1576, -92 )
+
+[node name="LightPotion4" parent="." instance=ExtResource( 15 )]
+position = Vector2( 260, -348 )
+
+[node name="LightPotion5" parent="." instance=ExtResource( 15 )]
+position = Vector2( 2804, -352 )
+
+[node name="LightPotion6" parent="." instance=ExtResource( 15 )]
+position = Vector2( 3480, 232 )
+
 [connection signal="body_entered" from="Potion" to="Player" method="_on_Potion_body_entered"]
 [connection signal="body_entered" from="Potion5" to="Player" method="_on_Potion_body_entered"]
 [connection signal="body_entered" from="Potion4" to="Player" method="_on_Potion_body_entered"]
 [connection signal="body_entered" from="Potion2" to="Player" method="_on_Potion_body_entered"]
 [connection signal="body_entered" from="Potion3" to="Player" method="_on_Potion_body_entered"]
 [connection signal="body_entered" from="DeathZone" to="Player" method="_on_DeathZone_body_entered"]
+[connection signal="timeout" from="LightTimer" to="." method="_on_LightTimer_timeout"]
+[connection signal="body_entered" from="LightPotion" to="." method="_on_LightPotion_body_entered"]
