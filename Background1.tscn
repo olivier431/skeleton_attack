@@ -40,4 +40,4 @@ texture = ExtResource( 1 )
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2( 2752, 1808 )
 rotation = 0.000901567
-color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
+color = Color( 0.0117647, 0.0117647, 0.0117647, 1 )

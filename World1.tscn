@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Asset/Platforme/platforms.tres" type="TileSet" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Score.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Potion.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Asset/light.png" type="Texture" id=12]
+[ext_resource path="res://DeathZone.tscn" type="PackedScene" id=13]
 
 [node name="World1" type="Node2D"]
 position = Vector2( 216, 768 )
@@ -51,15 +52,6 @@ cell_custom_transform = Transform2D( 12, 0, 0, 12, 0, 0 )
 format = 1
 tile_data = PoolIntArray( -4390606, 0, 0, -982944, 0, 0, -196619, 0, 0, -262086, 0, 0, -262000, 0, 0, -261961, 0, 0, -261947, 0, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -320, 184 )
-
-[node name="Light2D" type="Light2D" parent="Player"]
-position = Vector2( -8, 72 )
-scale = Vector2( 0.65625, 0.460937 )
-texture = ExtResource( 12 )
-shadow_enabled = true
-
 [node name="Portail" parent="." instance=ExtResource( 5 )]
 position = Vector2( 3776, 192 )
 
@@ -84,22 +76,39 @@ position = Vector2( 2400, -356 )
 [node name="Skeleton7" parent="." instance=ExtResource( 4 )]
 position = Vector2( 3516, -556 )
 
-[node name="Potion" parent="." instance=ExtResource( 11 )]
-position = Vector2( 308, 216 )
-
-[node name="Potion2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1980, 220 )
-
-[node name="Potion3" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1136, -420 )
-
-[node name="Potion4" parent="." instance=ExtResource( 11 )]
-position = Vector2( 3412, -548 )
-
-[node name="Potion5" parent="." instance=ExtResource( 11 )]
-position = Vector2( 3396, 224 )
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )
 
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( -320, 184 )
+
+[node name="Light2D" type="Light2D" parent="Player"]
+position = Vector2( 2.00002, 50.0002 )
+scale = Vector2( 0.503906, 0.417969 )
+texture = ExtResource( 12 )
+
+[node name="Potion" parent="." instance=ExtResource( 11 )]
+position = Vector2( 328, 224 )
+
+[node name="Potion5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 3404, 224 )
+
+[node name="Potion4" parent="." instance=ExtResource( 11 )]
+position = Vector2( -696, -608 )
+
+[node name="Potion2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1016, -416 )
+
+[node name="Potion3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 2004, 224 )
+
+[node name="DeathZone" parent="." instance=ExtResource( 13 )]
+position = Vector2( -76, 432 )
+scale = Vector2( 0.503906, 0.417969 )
+
 [connection signal="body_entered" from="Potion" to="Player" method="_on_Potion_body_entered"]
+[connection signal="body_entered" from="Potion5" to="Player" method="_on_Potion_body_entered"]
+[connection signal="body_entered" from="Potion4" to="Player" method="_on_Potion_body_entered"]
+[connection signal="body_entered" from="Potion2" to="Player" method="_on_Potion_body_entered"]
+[connection signal="body_entered" from="Potion3" to="Player" method="_on_Potion_body_entered"]
+[connection signal="body_entered" from="DeathZone" to="Player" method="_on_DeathZone_body_entered"]

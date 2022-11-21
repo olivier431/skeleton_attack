@@ -83,13 +83,13 @@ public class Player : KinematicBody2D
 	private void _on_Potion_body_entered(object body)
 	{
 		GD.Print(body.GetType().Name.ToString());
-		if(body.GetType().Name.ToString() == "Player"){
-			GD.Print("THIS");
-			if(life < 100){
-				life = life + 25;
+			if(body.GetType().Name.ToString() == "Player"){
+				GD.Print("THIS");
+				if(life < 100){
+					life = life + 25;
+				}
+				Life_change(life);
 			}
-			Life_change(life);
-		}
 	}
 	//For World2
 	private void _on_Potion_body_entered2(object body)
@@ -101,6 +101,14 @@ public class Player : KinematicBody2D
 				life = life + 25;
 			}
 			Life_change(life);
+		}
+	}
+	
+	private void _on_DeathZone_body_entered(object body)
+	{
+		if(body.GetType().Name.ToString() == "Player"){
+			GetTree().ChangeScene("res://DeathScene.tscn");
+			QueueFree();
 		}
 	}
 	
@@ -280,6 +288,12 @@ public class Player : KinematicBody2D
 	}
 	
 }
+
+
+
+
+
+
 
 
 
