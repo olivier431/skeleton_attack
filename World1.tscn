@@ -86,7 +86,7 @@ color = Color( 0, 0, 0, 1 )
 position = Vector2( -320, 184 )
 
 [node name="Light2D" type="Light2D" parent="Player"]
-position = Vector2( 22.5, 64 )
+position = Vector2( 8, 16 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 12 )
 
@@ -116,20 +116,21 @@ wait_time = 3.0
 position = Vector2( 172, 228 )
 
 [node name="LightPotion2" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1220, 160 )
+position = Vector2( 2080, -352 )
 
 [node name="LightPotion3" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1576, -92 )
+position = Vector2( 1532, 228 )
 
 [node name="LightPotion4" parent="." instance=ExtResource( 15 )]
-position = Vector2( 260, -348 )
+position = Vector2( 1236, -416 )
 
 [node name="LightPotion5" parent="." instance=ExtResource( 15 )]
-position = Vector2( 2804, -352 )
+position = Vector2( 856, 100 )
 
 [node name="LightPotion6" parent="." instance=ExtResource( 15 )]
-position = Vector2( 3480, 232 )
+position = Vector2( 188, -352 )
 
+[connection signal="body_entered" from="Portail" to="." method="_on_Portail_body_entered"]
 [connection signal="body_entered" from="Potion" to="Player" method="_on_Potion_body_entered"]
 [connection signal="body_entered" from="Potion5" to="Player" method="_on_Potion_body_entered"]
 [connection signal="body_entered" from="Potion4" to="Player" method="_on_Potion_body_entered"]
@@ -138,3 +139,8 @@ position = Vector2( 3480, 232 )
 [connection signal="body_entered" from="DeathZone" to="Player" method="_on_DeathZone_body_entered"]
 [connection signal="timeout" from="LightTimer" to="." method="_on_LightTimer_timeout"]
 [connection signal="body_entered" from="LightPotion" to="." method="_on_LightPotion_body_entered"]
+[connection signal="body_entered" from="LightPotion2" to="." method="_on_LightPotion_body_entered"]
+[connection signal="body_entered" from="LightPotion3" to="." method="_on_LightPotion_body_entered"]
+[connection signal="body_entered" from="LightPotion4" to="." method="_on_LightPotion_body_entered"]
+[connection signal="body_entered" from="LightPotion5" to="." method="_on_LightPotion_body_entered"]
+[connection signal="body_entered" from="LightPotion6" to="." method="_on_LightPotion_body_entered"]

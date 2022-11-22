@@ -72,20 +72,25 @@ position = Vector2( 512, 288 )
 [node name="Potion" parent="." instance=ExtResource( 13 )]
 position = Vector2( 1056, 320 )
 
-[node name="Potion2" parent="." instance=ExtResource( 13 )]
-position = Vector2( 3488, 320 )
-
-[node name="Potion3" parent="." instance=ExtResource( 13 )]
-position = Vector2( -672, -448 )
+[node name="Potion5" parent="." instance=ExtResource( 13 )]
+position = Vector2( 128, -576 )
 
 [node name="Potion4" parent="." instance=ExtResource( 13 )]
-position = Vector2( 2944, -128 )
+position = Vector2( 1056, -384 )
 
-[node name="Potion5" parent="." instance=ExtResource( 13 )]
-position = Vector2( 3008, -768 )
+[node name="Potion3" parent="." instance=ExtResource( 13 )]
+position = Vector2( -448, -128 )
+
+[node name="Potion2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 512, 128 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( -832, 224 )
 
+[connection signal="body_entered" from="Portail" to="." method="_on_Portail_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Potion" to="Player" method="_on_Potion_body_entered2"]
+[connection signal="body_entered" from="Potion5" to="Player" method="_on_Potion_body_entered2"]
+[connection signal="body_entered" from="Potion4" to="Player" method="_on_Potion_body_entered2"]
+[connection signal="body_entered" from="Potion3" to="Player" method="_on_Potion_body_entered2"]
+[connection signal="body_entered" from="Potion2" to="Player" method="_on_Potion_body_entered2"]

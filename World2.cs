@@ -37,10 +37,20 @@ public class World2 : Node2D
 		}
 		
 	}
+	
+	private void _on_Portail_body_entered(object body)
+	{
+		if(body.GetType().Name.ToString() == "Player" && GlobalVariable.score >= 5){
+			GetTree().ChangeScene("res://Victory.tscn");
+		}
+	}
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(float delta)
 	{
 	 	
 	}
 }
+
+
+
 

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Portail : Area2D
+public class Victory : Control
 {
 	// Declare member variables here. Examples:
 	// private int a = 2;
@@ -12,20 +12,34 @@ public class Portail : Area2D
 	{
 		
 	}
+	
+	private void _on_MainMenu_pressed()
+	{
+		GetTree().ChangeScene("res://MainMenu.tscn");
+	}
+	
+	private void _on_Quit_pressed()
+	{
+		GetTree().Quit();
+	}
+	
+	private void _on_Restart_pressed()
+	{
+		GetTree().ChangeScene("res://World1.tscn");
+	}
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 //  public override void _Process(float delta)
 //  {
 //      
 //  }
-
-	public override void _Process(float delta)
-	{
-	 	
-		
-  	}
-
-	
 }
 
- 
+
+
+
+
+
+
+
+

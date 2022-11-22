@@ -26,6 +26,13 @@ public class World1 : Node2D
 		}
 	}
 	
+	private void _on_Portail_body_entered(object body)
+	{
+		if (body.GetType().Name.ToString() == "Player"){
+				GetTree().ChangeScene("res://World2.tscn");
+			}
+	}
+	
 	private void _on_LightTimer_timeout()
 	{
 		lightScale.x = 0.4f;
@@ -39,6 +46,9 @@ public class World1 : Node2D
 //      
 //  }
 }
+
+
+
 
 
 
