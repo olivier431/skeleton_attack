@@ -1,7 +1,10 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://LifeBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Flash.gdshader" type="Shader" id=2]
+[ext_resource path="res://Asset/Music/04_Fire_explosion_04_medium.wav" type="AudioStream" id=3]
+[ext_resource path="res://Asset/Music/30_Jump_03.wav" type="AudioStream" id=4]
+[ext_resource path="res://Asset/Music/15_Impact_flesh_02.wav" type="AudioStream" id=5]
 [ext_resource path="res://Player.cs" type="Script" id=9]
 [ext_resource path="res://Asset/Wizard Pack/spritesheet.png" type="Texture" id=10]
 
@@ -38,6 +41,20 @@ tracks/1/keys = {
 "values": [ {
 "args": [  ],
 "method": "End_Attack"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "AttackMusic"
 } ]
 }
 
@@ -117,6 +134,20 @@ tracks/1/keys = {
 "method": "Hurt_End"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "HurthMusic"
+} ]
+}
 
 [sub_resource type="Animation" id=49]
 resource_name = "Idle"
@@ -149,6 +180,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 40, 41 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "JumpMusic"
+} ]
 }
 
 [sub_resource type="Animation" id=57]
@@ -345,6 +390,15 @@ shape = SubResource( 78 )
 
 [node name="FlashTimer" type="Timer" parent="."]
 wait_time = 0.15
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="HurthSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_FlashTimer_timeout"]

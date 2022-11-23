@@ -35,6 +35,9 @@ public class Player : KinematicBody2D
 	ProgressBar  _ProgressBar;
 	CollisionShape2D _SpellRight;
 	CollisionShape2D _SpellLeft;
+	AudioStreamPlayer AttackSound;
+	AudioStreamPlayer JumpSound;
+	AudioStreamPlayer HurthSound;
 	
 	Timer flashTimer;
 	
@@ -50,7 +53,10 @@ public class Player : KinematicBody2D
 		_ProgressBar = (ProgressBar)GetNode("HealthBar/ProgressBar");
 		_SpellRight = GetNode<CollisionShape2D>("SpellRight/AttackRightBox");
 		_SpellLeft = GetNode<CollisionShape2D>("SpellLeft/AttackLeftBox");
-		flashTimer = GetNode<Timer>("FlashTimer");                                              
+		flashTimer = GetNode<Timer>("FlashTimer");    
+		AttackSound = GetNode<AudioStreamPlayer>("AttackSound");                                        
+		JumpSound = GetNode<AudioStreamPlayer>("JumpSound");                                        
+		HurthSound = GetNode<AudioStreamPlayer>("HurthSound");                                        
 		Flash = sprite.Material as ShaderMaterial;
 		_cam.Zoom = new Vector2(0.15f, 0.15f);
 		
@@ -139,6 +145,7 @@ public class Player : KinematicBody2D
 		
 		if (Input.IsActionJustPressed("Attack1"))
 		{
+			
 			currentState = State.ATTACK;
 			_statemachine.Start("Attack");
 		}
@@ -172,12 +179,15 @@ public class Player : KinematicBody2D
 		
 		if (Input.IsActionJustPressed("Attack1"))
 		{
+		
 			currentState = State.ATTACK;
 			_statemachine.Start("Attack");
 		}
 	}
 	
 	private void Jump(){
+		if(Music.getMusicStatus() == true){
+		}
 		if(IsOnFloor()){
 			motion.x = Mathf.Lerp(motion.x, MAXSPEED * motion.x > 0 ? 1 : -1, (ACCEL * 1f) / MAXSPEED);
 			motion.y = -JUMPFORCE;
@@ -206,6 +216,7 @@ public class Player : KinematicBody2D
 		
 		if (Input.IsActionJustPressed("Attack1"))
 		{
+			
 			currentState = State.ATTACK;
 			_statemachine.Start("Attack");
 		}
@@ -218,6 +229,7 @@ public class Player : KinematicBody2D
 		}else{
 			_SpellLeft.Disabled = false;
 		}
+		
 	}
 	private void End_Attack(){
 		currentState = State.IDLE;
@@ -251,6 +263,26 @@ public class Player : KinematicBody2D
 		GD.Print("Death");
 		GetTree().ChangeScene("res://DeathScene.tscn");
 		QueueFree();
+	}
+	
+	private void AttackMusic(){
+		if(Music.getMusicStatus()){
+			AttackSound.Play();
+		}
+		
+	}
+	
+	private void JumpMusic(){
+		if(Music.getMusicStatus()){
+			JumpSound.Play();
+		}
+		
+	}
+	
+	private void HurthMusic(){
+		if(Music.getMusicStatus()){
+			HurthSound.Play();
+		}
 	}
 	
 	private void Life_change(int life){

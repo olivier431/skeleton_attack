@@ -17,6 +17,12 @@ public class Music : Node2D
 		music.Playing = !music.Playing;
 	
 	}
+	
+	public static bool getMusicStatus(){
+		
+		return music.Playing;
+	
+	}
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 public override void _Process(float delta)
 	{
