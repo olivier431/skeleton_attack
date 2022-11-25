@@ -29,7 +29,7 @@ public class Pause : CanvasLayer
 		button.Visible = !button.Visible;
 		button2.Visible = !button2.Visible;
 		button3.Visible = !button3.Visible;
-		Music.Playing = !Music.Playing;
+		//Music.Playing = !Music.Playing;
 		GetTree().Paused = !GetTree().Paused;
 	}
 	
