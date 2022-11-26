@@ -38,14 +38,18 @@ text = "Option Menu"
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -447.0
+margin_left = -3.0
+margin_top = -531.0
+margin_right = -3.0
+margin_bottom = -9.0
 custom_fonts/font = SubResource( 3 )
 text = "Here are the game controls : 
 Use the arrows to move the character 
 Use space to jump
 use shift to attack 
 use the 'p' key on the keyboard to pause the game
-use the 'm' key on the keyboard to mute the music"
+use the 'm' key on the keyboard to mute the music
+Use the 'd' key on the keyboard to show the nerd data"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 0.5
