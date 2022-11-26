@@ -321,6 +321,33 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource( 9 )
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = -115.0
+margin_top = -84.0
+margin_right = 128.0
+margin_bottom = -40.0
+
+[node name="FPS" type="Label" parent="HBoxContainer"]
+visible = false
+margin_top = 15.0
+margin_right = 7.0
+margin_bottom = 29.0
+text = "a"
+
+[node name="STATE" type="Label" parent="HBoxContainer"]
+visible = false
+margin_top = 15.0
+margin_right = 95.0
+margin_bottom = 29.0
+text = "dfgfdgfdgdfgfdg"
+
+[node name="POSITION" type="Label" parent="HBoxContainer"]
+visible = false
+margin_top = 15.0
+margin_right = 84.0
+margin_bottom = 29.0
+text = "dfgfdgdfgdfgd"
+
 [node name="HealthBar" parent="." instance=ExtResource( 1 )]
 margin_left = -34.0
 margin_top = -53.0
