@@ -27,7 +27,6 @@ Pour effectuer ce concept, je me suis inspiré des notes de cours de notre profe
 
 ## State Machine ou La machine à états finis
 Ce concept permet d'avoir un code beaucoup plus facile a lire sans avoir des if a répétition. Ce concept nous permet de gérer facilement les états de notre personnage qui sont au préalable dans un enum. Lorsque nous voulons que notre personnage saute ou cours tout juste après un voir attaquer il suffit simplement de changer l'état pour que celle-ci ce change dans la switch par exemple.
-**
 <table>
     <tr>
         <td>
