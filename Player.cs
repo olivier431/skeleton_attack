@@ -38,6 +38,9 @@ public class Player : KinematicBody2D
 	AudioStreamPlayer AttackSound;
 	AudioStreamPlayer JumpSound;
 	AudioStreamPlayer HurthSound;
+	Label FPS;
+	Label STATE;
+	Label POSITION;
 	
 	Timer flashTimer;
 	
@@ -57,11 +60,18 @@ public class Player : KinematicBody2D
 		AttackSound = GetNode<AudioStreamPlayer>("AttackSound");                                        
 		JumpSound = GetNode<AudioStreamPlayer>("JumpSound");                                        
 		HurthSound = GetNode<AudioStreamPlayer>("HurthSound");                                        
+		FPS = GetNode<Label>("HBoxContainer/FPS");                                        
+		STATE = GetNode<Label>("HBoxContainer/STATE");                                        
+		POSITION = GetNode<Label>("HBoxContainer/POSITION");                                        
 		Flash = sprite.Material as ShaderMaterial;
 		_cam.Zoom = new Vector2(0.15f, 0.15f);
 		
 		_SpellRight.Disabled = true;
 		_SpellLeft.Disabled = true;
+
+		
+		
+		
 	}
 	
 	private void flash() {
@@ -82,16 +92,13 @@ public class Player : KinematicBody2D
 	{
 		GD.Print(area.GetType().Name.ToString());
 		if(area.IsInGroup("Attack")){
-			GD.Print("OK!");
 			Hurt();
 		}
 	}
 	//For World1
 	private void _on_Potion_body_entered(object body)
 	{
-		GD.Print(body.GetType().Name.ToString());
 			if(body.GetType().Name.ToString() == "Player"){
-				GD.Print("THIS");
 				if(life < 100){
 					life = life + 25;
 				}
@@ -101,9 +108,7 @@ public class Player : KinematicBody2D
 	//For World2
 	private void _on_Potion_body_entered2(object body)
 	{
-		GD.Print(body.GetType().Name.ToString());
 		if(body.GetType().Name.ToString() == "Player"){
-			GD.Print("THIS");
 			if(life < 100){
 				life = life + 25;
 			}
@@ -135,7 +140,6 @@ public class Player : KinematicBody2D
 		}
 		if (IsOnFloor())
 		{
-			// On ne regarde qu'un seul fois et non le maintient de la touche
 			if (Input.IsActionJustPressed("ui_jump"))
 			{
 				currentState = State.JUMP;
@@ -160,7 +164,6 @@ public class Player : KinematicBody2D
 		}
 		motion.x += ACCEL * dir.x;
 		motion.x = motion.Clamped(MAXSPEED).x;
-			// On ne regarde qu'un seul fois et non le maintient de la touche
 		if (Input.IsActionJustPressed("ui_jump"))
 		{
 			currentState = State.JUMP;
@@ -212,6 +215,7 @@ public class Player : KinematicBody2D
 		if(motion.y == 0){
 			currentState = State.IDLE;
 			_statemachine.Travel("Idle");
+
 		}
 		
 		if (Input.IsActionJustPressed("Attack1"))
@@ -219,6 +223,7 @@ public class Player : KinematicBody2D
 			
 			currentState = State.ATTACK;
 			_statemachine.Start("Attack");
+
 		}
 	}	
 	
@@ -288,8 +293,22 @@ public class Player : KinematicBody2D
 	private void Life_change(int life){
 		_ProgressBar.Value = life;
 	}
+	
+	private void Debug(){
+		if (Input.IsActionJustPressed("DEBUG"))
+		{
+			FPS.Visible = !FPS.Visible;
+			STATE.Visible = !STATE.Visible;
+			POSITION.Visible = !POSITION.Visible;
+		}
+	}
+	
  	public override void _PhysicsProcess(float delta)
 	{
+		Debug();
+		FPS.Text =  "FPS : " + Engine.GetFramesPerSecond().ToString();
+		POSITION.Text = "Position :  " + Position.ToString();
+		STATE.Text = "Current State : " + currentState.ToString();
 		dir = DIR();
 		switch (currentState)
 		{

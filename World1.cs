@@ -35,8 +35,8 @@ public class World1 : Node2D
 	
 	private void _on_LightTimer_timeout()
 	{
-		lightScale.x = 0.4f;
-		lightScale.y = 0.4f;
+		lightScale.x = 0.6f;
+		lightScale.y = 0.6f;
 		light.Scale = lightScale;
 	}
 

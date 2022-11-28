@@ -87,7 +87,7 @@ position = Vector2( -320, 184 )
 
 [node name="Light2D" type="Light2D" parent="Player"]
 position = Vector2( 8, 16 )
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 12 )
 
 [node name="Potion" parent="." instance=ExtResource( 11 )]
