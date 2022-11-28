@@ -32,8 +32,8 @@ Ce concept permet d'avoir un code beaucoup plus facile a lire sans avoir des if 
     <tr>
         <td>
             <figure>
-                <img src="Asset/Concept/State_Machine.png"/>
-                <figcaption>liste des couchent utiliser dans le parallax. Ces couchent sont des ParallaxLayer aux quelles sont attachés un sprite</figcaption>
+                <img src="Asset/Concept/State_Machine.PNG"/>
+                <figcaption>Switch de state ansi que le changement d'état afficher en console</figcaption>
             </figure>
         </td>  
     </tr>
