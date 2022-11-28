@@ -32,7 +32,7 @@ Ce concept permet d'avoir un code beaucoup plus facile a lire sans avoir des if 
     <tr>
         <td>
             <figure>
-                <img src="Asset/Concept/parallax1.png"/>
+                <img src="Asset/Concept/State_Machine.png"/>
                 <figcaption>liste des couchent utiliser dans le parallax. Ces couchent sont des ParallaxLayer aux quelles sont attachés un sprite</figcaption>
             </figure>
         </td>  

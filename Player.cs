@@ -134,6 +134,7 @@ public class Player : KinematicBody2D
 		if(dir.x != 0){
 			currentState = State.RUN;
 			_statemachine.Travel("Run");
+			GD.Print(currentState);
 		}
 		else{
 			motion = motion.LinearInterpolate(Vector2.Zero, 0.2f);
@@ -149,9 +150,9 @@ public class Player : KinematicBody2D
 		
 		if (Input.IsActionJustPressed("Attack1"))
 		{
-			
 			currentState = State.ATTACK;
 			_statemachine.Start("Attack");
+			GD.Print(currentState);
 		}
 	}
 	private void Run(){
@@ -168,6 +169,7 @@ public class Player : KinematicBody2D
 		{
 			currentState = State.JUMP;
 			_statemachine.Travel("Jump");
+			GD.Print(currentState);
 		}
 	
 		if(dir.x == 0){
@@ -305,6 +307,7 @@ public class Player : KinematicBody2D
 	
  	public override void _PhysicsProcess(float delta)
 	{
+		
 		Debug();
 		FPS.Text =  "FPS : " + Engine.GetFramesPerSecond().ToString();
 		POSITION.Text = "Position :  " + Position.ToString();
