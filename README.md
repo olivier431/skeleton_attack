@@ -10,13 +10,13 @@ ce concept intégré a Godot permet la gestion de l'arrière plan afin que plusi
     <tr>
         <td>
             <figure>
-                <img src="asset/Concept/parallax1.png"/>
+                <img src="Asset/Concept/parallax1.png"/>
                 <figcaption>liste des couchent utiliser dans le parallax. Ces couchent sont des ParallaxLayer aux quelles sont attachés un sprite</figcaption>
             </figure>
         </td>  
         <td>  
             <figure>
-                <img src="asset/Concept/parallax2.png"/>
+                <img src="Asset/Concept/parallax2.png"/>
                 <figcaption>parallax final avec toutes les couchent supperposées</figcaption>
             </figure>
         </td>
