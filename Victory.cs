@@ -15,7 +15,7 @@ public class Victory : Control
 	
 	private void _on_MainMenu_pressed()
 	{
-		GetTree().ChangeScene("res://MainMenu.tscn");
+		GetTree().ChangeScene("res://Menu.tscn");
 	}
 	
 	private void _on_Quit_pressed()

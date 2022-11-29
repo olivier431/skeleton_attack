@@ -125,6 +125,9 @@ public class Skeleton : KinematicBody2D
 			sprite.FlipH = true;
 		}
 		
+		_MasseRight.Disabled = true;
+		_MasseLeft.Disabled = true;
+		
 		switch (currentState){
 			case state.WALK:
 				Detect_direction_change();
@@ -157,10 +160,12 @@ public class Skeleton : KinematicBody2D
 		if(is_player_nearby){
 			if(facing_right){
 			_MasseRight.Disabled = false;
+			
 		}else{
 			_MasseLeft.Disabled = false;
 		}
 			animationState.Travel("Attack");
+			
 		}
 	
 	}
@@ -182,7 +187,6 @@ public class Skeleton : KinematicBody2D
 	public void flip_direction(){
 		direction *= -1;
 		direction_flip = true;
-		
 	}
 	
 	public void Walk_enter(){
@@ -198,6 +202,7 @@ public class Skeleton : KinematicBody2D
 		}
 		animationState.Travel("Attack");
 		currentState = state.ATTACK;
+		
 	}
 
 }
